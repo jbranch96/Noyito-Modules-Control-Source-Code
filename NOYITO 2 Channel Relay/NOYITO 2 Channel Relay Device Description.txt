@@ -1,0 +1,36 @@
+ASIN ‏ : ‎ B081RM7PMY
+Amazon Product Description:
+============================================================================================================================
+Features:
+1. Onboard high-performance microcontrollers chip;
+2. Onboard CH340 USB control chip;
+3. Onboard power LED and relay status LED;
+4. Onboard 2-channel 5V, 10A / 250VAC, 10A / 30VDC relays, relay life can be a continuous pull 10 million times;
+5. Module with overcurrent protection and relay diode freewheeling protection;
+
+Hardware introduction and description
+Board size: 50 x 40mm
+Board Interface Description:
+COM1: common;
+NC1: normally closed;
+NO1: normally open.
+COM2: common;
+NC2: normally closed;
+NO2: normally open.
+
+Communication protocol description:
+Default communication baud rate: 9600BPS
+Turn on the 1-channel relay switch: A0 01 01 A2
+Turn off the 1-channel relay switch: A0 01 00 A1
+Turn on the 2-channel relay switch: A0 02 01 A3
+Turn off the 2-channel relay switch: A0 02 00 A2
+
+USB switch communication protocol
+Data (1)start flag (default is 0xA0)
+Data (2) switch address codes (0x01 and 0x02 represent the first and second switches, respectively)
+Data (3) operating data (0x00 is "off", 0x01 is "on")
+Data (4) check code
+
+Usage Description:
+1. Connect the USB relay module to the computer and install the CH340 USB to serial chip driver
+2. Open the STC-ISP, SSCOM32 such serial debugging software, select the baud rate of 9600, in hexadecimal (hex) form send A0 01 01 A2 and A0 02 01 A3 can be opened the first and second relay ; Send in hexadecimal (hex) A0 01 00 A1 and A0 02 00 A2 can be turned off the first and second relay, respectively.
